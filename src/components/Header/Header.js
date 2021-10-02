@@ -8,9 +8,9 @@ const Header = () => {
         <div className="header">
             <img className="logo" src={logo} alt="" />
             <nav>
-                <NavLink to="/shop">Shop</NavLink>
-                <NavLink to="/orders">Order Review</NavLink>
-                <NavLink to="/inventory">Manage Inventory</NavLink>
+                <NavLink to="/shop" activeStyle={{ fontWeight: "bold", color:"goldenrod" }}>Shop</NavLink>
+                <NavLink to="/orders" activeStyle={{ fontWeight: "bold", color:"goldenrod" }}>Order Review</NavLink>
+                <NavLink to="/inventory" activeStyle={{ fontWeight: "bold", color:"goldenrod" }}>Manage Inventory</NavLink>
             </nav>
         </div>
     );
