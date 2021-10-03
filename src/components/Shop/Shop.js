@@ -37,7 +37,20 @@ const Shop = () => {
     }, [products])
 
     const handleAddToCart = (product) => {
-        const newCart = [...cart, product];
+        const exist = cart.find(p => p.key === product.key)// if product exist in cart
+        let newCart = []
+        if (exist) {
+            const rest = cart.filter(p => p.key !== product.key);//baki golake alada kora hoache
+            const quantity = product.quantity; // jeta ache tar quantity ber kora hoache.
+            product.quantity = quantity + 1;//quantity baranu hoache
+            newCart = [...rest, product]//new cart e product take set kora hoache
+
+        }
+        else {
+            product.quantity = 1;
+            newCart = [...cart, product]
+        }
+        
         setCart(newCart);
         // save to local storage (for now)
         addToDb(product.key);
@@ -72,9 +85,9 @@ const Shop = () => {
                 </div>
                 <div className="cart-container">
                     <Cart cart={cart}>
-                       <Link to='/orders'>
-                       <button className='btn-regular'>Review Order</button>
-                       </Link>
+                        <Link to='/orders'>
+                            <button className='btn-regular'>Review Order</button>
+                        </Link>
                     </Cart>
                 </div>
             </div>
